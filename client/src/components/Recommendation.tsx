@@ -14,10 +14,12 @@ import {Card} from '@/components/ui/card';
 
 const Recommendation = () => {
   const [articles, setArticles] = useState([]);
+
   function formatPublishedDate(publishedAt) {
     const date = new Date(publishedAt);
     return date.toLocaleDateString();
   }
+
   useEffect(() => {
     let tempData = articlesData
       .map(item => item)
@@ -35,7 +37,11 @@ const Recommendation = () => {
         <View style={styles.contentColumn}>
           <View style={styles.content}>
             <Text style={styles.source}>Author: {item.author}</Text>
-            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.title}>
+              {item.title.length > 60
+                ? item.title.slice(0, 100) + '...'
+                : item.title}
+            </Text>
             <Text style={styles.source}>Source: {item.source.name}</Text>
             <Text style={styles.source}>
               Published on: {formatPublishedDate(item.publishedAt)}
@@ -49,17 +55,17 @@ const Recommendation = () => {
   return (
     <>
       <View style={styles.headerRow}>
-        <Heading size="xl" style={styles.heading}>
-          Breaking News
+        <Heading size="2xl" style={styles.heading}>
+          Recommendation
         </Heading>
-        <View style={styles.viewAllRow}>
-          <AntDesign name="downcircleo" color={'#6A9AB0'} />
+        <TouchableOpacity style={styles.viewAllRow}>
+          <AntDesign name="downcircleo" size={16} color={'#6A9AB0'} />
           <Heading
             size="xl"
             style={[styles.heading, {color: '#6A9AB0', fontWeight: '500'}]}>
             View All
           </Heading>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <FlatList
@@ -89,7 +95,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
-    paddingHorizontal: 10,
   },
   card: {
     backgroundColor: '#fff',

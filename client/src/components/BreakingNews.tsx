@@ -8,6 +8,7 @@ import {
   Dimensions,
   ActivityIndicator,
   ListRenderItem,
+  TouchableOpacity,
 } from 'react-native';
 import {Heading} from '@/components/ui/heading';
 import {articlesData} from '../utils/dummyData';
@@ -86,17 +87,17 @@ const BreakingNews = () => {
   return (
     <View style={styles.container}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Heading size="xl" style={styles.heading}>
+        <Heading size="2xl" style={styles.heading}>
           Breaking News
         </Heading>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <AntDesign name="downcircleo" color={'#6A9AB0'} />
+        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
+          <AntDesign name="downcircleo" size={16} color={'#6A9AB0'} />
           <Heading
             size="xl"
             style={[styles.heading, {color: '#6A9AB0', fontWeight: '500'}]}>
             View All
           </Heading>
-        </View>
+        </TouchableOpacity>
       </View>
       <FlatList
         data={visibleArticles}
