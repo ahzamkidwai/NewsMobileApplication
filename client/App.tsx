@@ -1,14 +1,7 @@
-import {ScrollView} from 'react-native';
-import HeaderBar from './src/components/HeaderBar';
-import HomeScreenContent from './src/components/HomeScreenContent';
+import ScreenNavigation from './src/navigation/ScreenNavigation';
 
 const App = () => {
-  return (
-    <ScrollView>
-      <HeaderBar />
-      <HomeScreenContent />
-    </ScrollView>
-  );
+  return <ScreenNavigation />;
 };
 
 export default App;
